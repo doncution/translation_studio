@@ -5,12 +5,11 @@
     "outDir": "dist/renderer",
     "rootDir": "src/renderer",
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": ["ES2020", "DOM"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "types": ["node"]
+    "skipLibCheck": true
   },
   "include": ["src/renderer/**/*"]
 }
