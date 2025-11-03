@@ -1,0 +1,22 @@
+{
+  "name": "translation-studio",
+  "version": "0.1.0",
+  "description": "Barebones Electron application skeleton.",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "start": "npm run build && electron dist/main.js"
+  },
+  "keywords": [
+    "electron",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "electron": "^29.1.0",
+    "typescript": "^5.3.3"
+  }
+}
