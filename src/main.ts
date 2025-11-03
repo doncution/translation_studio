@@ -15,7 +15,7 @@ const createMainWindow = (): BrowserWindow => {
     },
   });
 
-  const rendererPath = join(app.getAppPath(), 'public', 'index.html');
+  const rendererPath = join(__dirname, '..', 'public', 'index.html');
   void mainWindow.loadFile(rendererPath);
 
   return mainWindow;
