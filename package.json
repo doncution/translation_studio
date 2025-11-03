@@ -4,7 +4,9 @@
   "description": "Barebones Electron application skeleton.",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.json",
+    "build:renderer": "tsc -p tsconfig.renderer.json && node scripts/build-renderer.mjs",
     "clean": "rm -rf dist",
     "start": "npm run build && electron dist/main.js"
   },
@@ -15,10 +17,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "semantic-ui-css": "^2.5.0"
+    "semantic-ui-css": "^2.5.0",
+    "vue": "^3.4.21"
   },
   "devDependencies": {
     "@types/node": "^20.11.19",
+    "@vue/compiler-sfc": "^3.4.21",
     "electron": "^29.1.0",
     "typescript": "^5.3.3"
   }

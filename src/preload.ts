@@ -1,10 +1,5 @@
 import { contextBridge } from 'electron';
-
-type RuntimeInfo = {
-  readonly chrome: string;
-  readonly electron: string;
-  readonly node: string;
-};
+import type { RuntimeInfo } from './common/runtime-info';
 
 declare global {
   interface Window {

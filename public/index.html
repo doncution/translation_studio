@@ -8,18 +8,16 @@
       rel="stylesheet"
       href="../node_modules/semantic-ui-css/semantic.min.css"
     />
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "../node_modules/vue/dist/vue.runtime.esm-browser.js"
+        }
+      }
+    </script>
   </head>
   <body>
-    <div class="ui container" style="margin-top: 2rem">
-      <h1 class="ui header">Translation Studio</h1>
-      <p>The Electron environment is running with the following runtime versions:</p>
-      <div class="ui segment">
-        <pre id="runtime-info" style="overflow-x: auto;"></pre>
-      </div>
-    </div>
-    <script>
-      const runtimeInfoElement = document.getElementById('runtime-info');
-      runtimeInfoElement.textContent = JSON.stringify(window.runtimeInfo, null, 2);
-    </script>
+    <div id="app"></div>
+    <script type="module" src="../dist/renderer/main.js"></script>
   </body>
 </html>
