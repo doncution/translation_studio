@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { compileScript, compileTemplate, parse } from '@vue/compiler-sfc';
+import ts from 'typescript';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -39,7 +40,15 @@ if (scriptContent.includes('export default')) {
   scriptContent = `${scriptContent}\nconst __sfc__ = __default__;`;
 }
 
-const renderedCode = `${template.code}\n${scriptContent}\n__sfc__.render = render;\nexport default __sfc__;\n`;
+const transpiledScript = ts.transpileModule(scriptContent, {
+  compilerOptions: {
+    module: ts.ModuleKind.ES2020,
+    target: ts.ScriptTarget.ES2020,
+    importsNotUsedAsValues: ts.ImportsNotUsedAsValues.Remove,
+  },
+}).outputText;
+
+const renderedCode = `${template.code}\n${transpiledScript}\n__sfc__.render = render;\nexport default __sfc__;\n`;
 
 await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, renderedCode, 'utf-8');
