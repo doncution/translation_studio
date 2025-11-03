@@ -1,9 +1,5 @@
 import type { DefineComponent } from 'vue';
 
-declare const component: DefineComponent<
-  { readonly runtimeInfo: import('../common/runtime-info').RuntimeInfo },
-  object,
-  object
->;
+declare const component: DefineComponent<{}, object, object>;
 
 export default component;

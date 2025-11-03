@@ -1,19 +1,7 @@
-import { contextBridge } from 'electron';
-import type { RuntimeInfo } from './common/runtime-info';
-
-declare global {
-  interface Window {
-    readonly runtimeInfo: RuntimeInfo;
-  }
-}
-
 /**
- * Exposes basic runtime metadata to the renderer process.
+ * The preload script is reserved for exposing safe APIs to the renderer.
+ *
+ * Runtime metadata is no longer required, so this file currently exports
+ * nothing. Keep this module in place to simplify adding future bridges.
  */
-const runtimeInfo: RuntimeInfo = {
-  chrome: process.versions.chrome,
-  electron: process.versions.electron,
-  node: process.versions.node,
-};
-
-contextBridge.exposeInMainWorld('runtimeInfo', runtimeInfo);
+export {};
