@@ -5,11 +5,33 @@
     <div class="ui segment">
       <pre style="overflow-x: auto;">{{ formattedRuntimeInfo }}</pre>
     </div>
+    <div class="ui segment">
+      <form class="ui form">
+        <div class="field">
+          <label for="sourceText">Source Text</label>
+          <textarea
+            id="sourceText"
+            rows="6"
+            v-model="sourceText"
+            placeholder="Enter the text to translate"
+          ></textarea>
+        </div>
+        <div class="field">
+          <label for="translationText">Translation</label>
+          <textarea
+            id="translationText"
+            rows="6"
+            v-model="translationText"
+            placeholder="Enter the translated text"
+          ></textarea>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import type { RuntimeInfo } from '../common/runtime-info';
 
 const props = defineProps<{
@@ -19,4 +41,7 @@ const props = defineProps<{
 const formattedRuntimeInfo = computed(() =>
   JSON.stringify(props.runtimeInfo, undefined, 2),
 );
+
+const sourceText = ref<string>('');
+const translationText = ref<string>('');
 </script>
